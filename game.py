@@ -1,5 +1,6 @@
 # Guess the number
-
+from pythonrandom.randommessage import get_message
+from pythonrandom.randommessage import get_winmessage
 import random
 def main():
     guessesTaken = 10
@@ -24,10 +25,10 @@ def main():
             print('Your guess is too low. ' + get_message())
 
         if guess > number:
-            print('Your guess is too high.' + get_message())
+            print('Your guess is too high.' +get_message())
 
         if guess == number:
-            print('Congratulations!you are smarter than you think!')
+            print('Well! ' + get_winmessage())
             break
 
 
@@ -36,8 +37,5 @@ def main():
             print("Idiot,cant even guess a number.Whar are you doing with your life?")
             break
 
-def get_message():
-    list =["HAHA!","You will never do it!","Just stop it!","Its just a number how hard can it be?","Can you count untill 5?"]
-    index=random.randint(0,4)
-    return list[index]
+
 main()

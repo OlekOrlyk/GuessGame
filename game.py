@@ -1,13 +1,18 @@
 # Guess the number
-from pythonrandom.randommessage import get_message
-from pythonrandom.randommessage import get_winmessage
+from pythonrandom.randommessage import *
+
 import random
 def main():
+    print("Champions")
+    records=get_record_list()
+    print_records(records)
+    print("Hello!Can you beat them?")
     guessesTaken = 10
-    print('Hello! What is your name?')
+    print('What is your name?')
     myName = input()
 
-    number = random.randint(1, 100)
+    number = 10
+    #random.randint(1, 100)
     print('Well, ' + myName + ', I am thinking of a number between 1 and 100.')
 
     while True:
@@ -28,7 +33,11 @@ def main():
             print('Your guess is too high.' +get_message())
 
         if guess == number:
-            print('Well! ' + get_winmessage())
+
+            if save_record(records,myName,guessesTaken):
+                print("Well you just beat yourself,congratulations!")
+            else :
+                print('Well! ' + get_winmessage())
             break
 
 

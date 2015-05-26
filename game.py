@@ -15,11 +15,11 @@ def main():
 
     guessesTaken = 10
     print('What is your name?')
-    myName = input()
+    my_name = input()
 
     number = 10
     # random.randint(1, 100)
-    print('Well, ' + myName + ', I am thinking of a number between 1 and 100.')
+    print('Well, ' + my_name + ', I am thinking of a number between 1 and 100.')
 
     while True:
 
@@ -38,11 +38,22 @@ def main():
             print('Your guess is too high.' + get_message())
 
         if guess == number:
+            champion = get_champion(records)
+            is_your_record = save_record(records, my_name, guessesTaken)
+            if champion["score"]:
+                if champion["score"] < guessesTaken:
+                    if champion["name"] == my_name:
+                        print("You beat yourself,congratulations!")
+                    else:
+                        print("You beat " + champion["name"])
+                else:
+                    if is_your_record:
+                        print("You only beat yourself!Shame on you.")
+                    else:
+                        print('Well! ' + get_winmessage())
 
-            if save_record(records, myName, guessesTaken):
-                print("Well you just beat yourself,congratulations!")
             else:
-                print('Well! ' + get_winmessage())
+                print("You set the first record!")
             break
 
         guessesTaken -= 1
